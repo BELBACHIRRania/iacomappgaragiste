@@ -13,7 +13,7 @@ class _VehiculeNListState extends State<VehiculeNList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(9.0),
         child: Container(
@@ -41,8 +41,7 @@ class _VehiculeNListState extends State<VehiculeNList> {
                           children: [
                             Container(
                               height: MediaQuery.of(context).size.height / 5,
-                              margin: EdgeInsets.only(
-                                  left: 20, right: 120, top: 5, bottom: 5),
+                              margin: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(20),
@@ -57,9 +56,9 @@ class _VehiculeNListState extends State<VehiculeNList> {
                               ),
                             ),
                             Positioned(
-                              top: 40,
+                              top: 10,
                               left: 20,
-                              right: 170,
+                              right: 150,
                               child: Column(
                                     children: [
                                       Container(
@@ -71,7 +70,22 @@ class _VehiculeNListState extends State<VehiculeNList> {
                                         child: Text(
                                           '${vehiculeN.nom_art}',
                                           style: TextStyle(
-                                            fontSize: 15,
+                                            fontSize: 17,
+                                            color: Colors.black,
+                                            fontFamily: "QueenBold",
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 20,
+                                            right: 20,
+                                            top: 5,
+                                            bottom: 5),
+                                        child: Text(
+                                          '${vehiculeN.sous_titre}',
+                                          style: TextStyle(
+                                            fontSize: 13,
                                             color: Colors.black,
                                             fontFamily: "QueenSemiBold",
                                           ),
@@ -81,63 +95,28 @@ class _VehiculeNListState extends State<VehiculeNList> {
                                   )
                             ),
                             Positioned(
-                              bottom: 10,
+                              bottom: 5,
                               left: 20,
                               right: 170,
-                              child: Row(
-                                    children: [
-                                      Container(
+                              child: Container(
                                         margin: EdgeInsets.only(
                                             left: 20, right: 5, bottom: 10),
                                         child: Text(
-                                          '${vehiculeN.prix_art}',
+                                          '${vehiculeN.prix_art} €',
                                           style: TextStyle(
                                             fontSize: 13,
                                             color: Colors.black,
                                             fontWeight: FontWeight.w100,
+                                            fontFamily: "QueenBold",
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 10),
-                                        child: Text(
-                                          '€',
-                                          style: TextStyle(
-                                              fontSize: 13,
-                                              color: Colors.black,
-                                              fontFamily: "Queen"
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 30),
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 10),
-                                        child: Icon(
-                                          Icons.access_time,
-                                          color: Color(0xFFFFCC80),
-                                          size: 20,
-                                        ),
-                                      ),
-                                      SizedBox(width: 3),
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 10),
-                                        child: Text(
-                                          '${vehiculeN.duree} min',
-                                          style: TextStyle(
-                                            fontSize: 13,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w100,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
                             ),
                             Positioned(
-                              top: -5,
-                              left: 200,
-                              right: 15,
-                              bottom: -5,
+                              top: 10,
+                              left: 220,
+                              right: 27,
+                              bottom: 10,
                               child: Image.network(
                                 'http://iacomapp.cest-la-base.fr/${vehiculeN.image_art}',
                                 fit: BoxFit.fill,
@@ -156,7 +135,7 @@ class _VehiculeNListState extends State<VehiculeNList> {
                     children: <Widget>[
                       CircularProgressIndicator(
                           valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xFFFFCC80),),
+                              AlwaysStoppedAnimation<Color>(Color(0xFF4267B2),),
                           strokeWidth: 5),
                     ],
                   ));

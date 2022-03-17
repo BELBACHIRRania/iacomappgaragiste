@@ -13,6 +13,7 @@ class VehiculeNDetailsScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.white,
         body: Container(
           padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(

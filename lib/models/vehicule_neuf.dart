@@ -13,6 +13,7 @@ class VehiculeN {
   String duree;
   String description;
   String image_art;
+  String sous_titre;
 
   VehiculeN({
     this.id_act,
@@ -21,6 +22,7 @@ class VehiculeN {
     this.duree,
     this.description,
     this.image_art,
+    this.sous_titre,
   });
 
   factory VehiculeN.fromMap(Map<String, dynamic> json) => VehiculeN(
@@ -30,6 +32,7 @@ class VehiculeN {
         duree: json["duree"],
         description: json["description"],
         image_art: json["image_art"],
+        sous_titre: json["sous_titre"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,5 +42,6 @@ class VehiculeN {
         "duree": duree,
         "description": description,
         "image_art": image_art,
+        "sous_titre": sous_titre,
       };
 }

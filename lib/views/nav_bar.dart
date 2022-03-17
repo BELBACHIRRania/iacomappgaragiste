@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iacomappgaragiste/views/actualite_list.dart';
+import 'package:iacomappgaragiste/views/body.dart';
 import 'package:iacomappgaragiste/views/login/sharedloginregister.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -48,7 +50,7 @@ class NavBarState extends State<NavBar> {
                   margin: EdgeInsets.only(left: 95, right: 5, bottom: 10),
                   color: Colors.white,
                   child: Text(
-                    " RESTAURANT ",
+                    " Garagiste ",
                     style: TextStyle(
                         color: Color(0xFF4267B2),
                         fontSize: 20,
@@ -92,15 +94,15 @@ class NavBarState extends State<NavBar> {
                 currentindex = 0;
                 await savePref(currentindex);
                 Navigator.pop(context);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Body()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Body()),
+                );
               }),
           ListTile(
               leading: Icon(FontAwesomeIcons.bookOpen, color: Colors.black87),
               title: Text(
-                'Carte',
+                'Nos Services',
                 style: TextStyle(
                   fontSize: 17,
                   color: Colors.black,
@@ -111,15 +113,15 @@ class NavBarState extends State<NavBar> {
                 currentindex = 1;
                 await savePref(currentindex);
                 Navigator.pop(context);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Body()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Body()),
+                );
               }),
           ListTile(
               leading: Icon(Icons.restaurant_menu, color: Colors.black87),
               title: Text(
-                'Menu',
+                'Prestations',
                 style: TextStyle(
                   fontSize: 17,
                   color: Colors.black,
@@ -130,10 +132,10 @@ class NavBarState extends State<NavBar> {
                 currentindex = 2;
                 await savePref(currentindex);
                 Navigator.pop(context);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Body()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Body()),
+                );
               }),
           ListTile(
             leading: Icon(Icons.bookmark, color: Colors.black87),
@@ -149,10 +151,10 @@ class NavBarState extends State<NavBar> {
               currentindex = 3;
               await savePref(currentindex);
               Navigator.pop(context);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Body()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Body()),
+              );
             },
           ),
           ListTile(
@@ -169,10 +171,10 @@ class NavBarState extends State<NavBar> {
               currentindex = 0;
               await savePref(currentindex);
               Navigator.pop(context);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ActualiteScreen()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ActualiteScreen()),
+              );
             },
           ),
           Divider(),
@@ -193,10 +195,10 @@ class NavBarState extends State<NavBar> {
               currentindex = 4;
               await savePref(currentindex);
               Navigator.pop(context);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Body()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Body()),
+              );
             },
           ),
           Divider(),

@@ -10,7 +10,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         endDrawer: NavBar(),
         appBar: AppBar(
           backgroundColor: Color(0xFF4267B2),

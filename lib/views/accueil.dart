@@ -6,7 +6,7 @@ class Accueil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         endDrawer: NavBar(),
         appBar: AppBar(
           backgroundColor: Color(0xFF4267B2),
@@ -46,7 +46,7 @@ class Accueil extends StatelessWidget {
                     width: 500,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color(0x73000000),
+                      color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                           offset: Offset(2, 2),
@@ -64,7 +64,7 @@ class Accueil extends StatelessWidget {
                         "\nDe la décoration jusqu’à dans l'assiette notre maître mot est le dépaysement. La légendaire zénitude asiatique s’exprime à travers une décoration branchée aux tons neutres, un cadre en osmose avec la musique d’ambiance aux airs chill-out. Fraîcheur et qualité supérieure sont les mots d’ordre côté cuisine. ",
                         style: TextStyle(
                             fontSize: 16,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontFamily: "QueenSemiBold"),
                         textAlign: TextAlign.justify),
                   ),

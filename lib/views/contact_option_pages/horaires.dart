@@ -4,8 +4,9 @@ class Horaires extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Container(
+        height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -16,10 +17,10 @@ class Horaires extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      offset: Offset(2, 2),
+                      offset: Offset(2,2),
                       blurRadius: 5,
                       spreadRadius: 1.0,
-                      color: Color(0xFFB0CCE1).withOpacity(0.15),
+                      color: Color(0xFFB0CCE1),
                     ),
                   ],
                 ),

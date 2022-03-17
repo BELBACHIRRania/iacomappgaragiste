@@ -20,7 +20,7 @@ class Information extends StatelessWidget {
                   "Avez-vous une question à nous poser, un commentaire ou une suggestion concernant nos services, n'hésitez pas à nous contacter !",
                   style: TextStyle(
                     fontSize: 13.7,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontFamily: "QueenBold",
                   ),
                 ),

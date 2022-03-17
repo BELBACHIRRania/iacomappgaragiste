@@ -30,7 +30,7 @@ class CarouselDemoState extends State<CarouselDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Container(
         child: SingleChildScrollView(
           child: Column(
@@ -66,7 +66,7 @@ class CarouselDemoState extends State<CarouselDemo> {
                             fit: BoxFit.fill,
                             image: AssetImage(imgUrl),
                           ),
-                          color: Colors.black,
+                          color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
                       );
