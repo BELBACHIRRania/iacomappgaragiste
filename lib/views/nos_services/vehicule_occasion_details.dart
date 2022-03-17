@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iacomappgaragiste/models/vehicule_neuf.dart';
 
-class VehiculeNDetailsScreen extends StatelessWidget {
-  final VehiculeN vehiculeN;
+class VehiculeODetailsScreen extends StatelessWidget {
+  final VehiculeN vehiculeO;
 
-  VehiculeNDetailsScreen(this.vehiculeN);
+  VehiculeODetailsScreen(this.vehiculeO);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class VehiculeNDetailsScreen extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.network(
-                      'http://iacomapp.cest-la-base.fr/${vehiculeN.image_art}',
+                      'http://iacomapp.cest-la-base.fr/${vehiculeO.image_art}',
                       fit: BoxFit.fill,
                       width: 250,
                       height: 250,
@@ -72,7 +72,7 @@ class VehiculeNDetailsScreen extends StatelessWidget {
                       Container(
                             width: 190,
                             child: Text(
-                              '${vehiculeN.nom_art}',
+                              '${vehiculeO.nom_art}',
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 fontSize: 17,
@@ -87,7 +87,7 @@ class VehiculeNDetailsScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 20, right: 5),
                     child: Text(
-                      '${vehiculeN.prix_art}',
+                      '${vehiculeO.prix_art}',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
@@ -130,7 +130,7 @@ class VehiculeNDetailsScreen extends StatelessWidget {
                 Container(
                   width: 300,
                   child: Text(
-                    '${vehiculeN.description}',
+                    '${vehiculeO.description}',
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                         fontSize: 15, color: Colors.black, fontFamily: "Queen"),

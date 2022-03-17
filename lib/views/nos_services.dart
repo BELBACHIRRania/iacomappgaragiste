@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iacomappgaragiste/views/nav_bar.dart';
 import 'package:iacomappgaragiste/views/nos_services/vehicule_neuf_list.dart';
+import 'package:iacomappgaragiste/views/nos_services/vehicule_occasion_list.dart';
 
 class NosServices extends StatefulWidget {
   @override
@@ -72,7 +73,7 @@ class NosServicesState extends State<NosServices> {
         body: TabBarView(
           children: <Widget>[
             VehiculeNList(),
-            VehiculeNList(),
+            VehiculeOList(),
           ],
         ),
       ),
