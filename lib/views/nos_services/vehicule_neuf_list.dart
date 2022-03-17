@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iacomappgaragiste/models/vehicule_neuf.dart';
+import 'package:iacomappgaragiste/models/article.dart';
 import 'package:iacomappgaragiste/services/vehicule_neuf-api.dart';
 import 'package:iacomappgaragiste/views/nos_services/vehicule_neuf_details.dart';
 
@@ -19,14 +19,14 @@ class _VehiculeNListState extends State<VehiculeNList> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           child: FutureBuilder(
-            future: fetchVehiculeN(),
+            future: fetchArticle(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
                     itemCount: snapshot.data.length,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, index) {
-                      VehiculeN vehiculeN = snapshot.data[index];
+                      Article vehiculeN = snapshot.data[index];
                       return GestureDetector(
                         onTap: (){
                           Navigator.push(

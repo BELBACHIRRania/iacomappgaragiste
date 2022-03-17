@@ -10,8 +10,7 @@ class InfosPerso extends StatefulWidget {
   final VoidCallback signOut;
   String name, email, mobile, password, points;
 
-  InfosPerso(this.signOut, this.name, this.email, this.mobile, this.password,
-      this.points);
+  InfosPerso(this.signOut, this.name, this.email, this.mobile, this.password, this.points);
 
   @override
   _InfosPersoState createState() => _InfosPersoState();
@@ -60,7 +59,7 @@ class _InfosPersoState extends State<InfosPerso> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       endDrawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color(0xFF4267B2),
@@ -114,6 +113,8 @@ class _InfosPersoState extends State<InfosPerso> {
                         height: 50,
                       ),
                       QrImage(
+
+                        foregroundColor: Color(0xFF4267B2),
                         backgroundColor: Colors.white,
                         data: email,
                         version: QrVersions.auto,
@@ -130,7 +131,7 @@ class _InfosPersoState extends State<InfosPerso> {
                           name,
                           style: TextStyle(
                             fontSize: 13.7,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontFamily: "QueenBold",
                             //fontWeight: FontWeight.w900
                           ),
@@ -143,7 +144,7 @@ class _InfosPersoState extends State<InfosPerso> {
                           '$email',
                           style: TextStyle(
                             fontSize: 13.7,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontFamily: "QueenBold",
                             //fontWeight: FontWeight.w900
                           ),
@@ -156,7 +157,7 @@ class _InfosPersoState extends State<InfosPerso> {
                           '$mobile',
                           style: TextStyle(
                             fontSize: 13.7,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontFamily: "QueenBold",
                             //fontWeight: FontWeight.w900
                           ),

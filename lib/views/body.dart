@@ -5,6 +5,7 @@ import 'package:iacomappgaragiste/views/accueil.dart';
 import 'package:iacomappgaragiste/views/nos_services.dart';
 import 'package:iacomappgaragiste/views/contact.dart';
 import 'package:iacomappgaragiste/views/reservation.dart';
+import 'package:iacomappgaragiste/views/prestations_list.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Body extends StatefulWidget {
@@ -20,7 +21,7 @@ class BodyState extends State<Body> {
   List<Widget> widgetOptions = <Widget>[
     Accueil(),
     NosServices(),
-    Reservation(),
+    Prestations(),
     Reservation(),
     Contact(),
   ];
@@ -60,11 +61,11 @@ class BodyState extends State<Body> {
               ),
               title: 'Accueil'),
           TabItem(
-              icon: Icon(FontAwesomeIcons.bookOpen, color: Colors.white),
-              title: 'Services'),
+              icon: Icon(FontAwesomeIcons.carAlt, color: Colors.white),
+              title: 'Service'),
           TabItem(
-              icon: Icon(Icons.restaurant_menu, color: Colors.white),
-              title: 'Menu'),
+              icon: Icon(FontAwesomeIcons.wrench,color: Colors.white),
+              title: 'Prestation'),
           TabItem(
               icon: Icon(Icons.bookmark, color: Colors.white),
               title: 'Reservation'),

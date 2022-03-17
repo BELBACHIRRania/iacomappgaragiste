@@ -36,7 +36,7 @@ class NavBarState extends State<NavBar> {
               children: [
                 Container(
                     margin: EdgeInsets.only(
-                        left: 35, right: 5, bottom: 10, top: 60),
+                        left: 60, right: 5, bottom: 10, top: 60),
                     color: Color(0xFF4267B2),
                     width: MediaQuery.of(context).size.width,
                     child: Text(
@@ -45,9 +45,10 @@ class NavBarState extends State<NavBar> {
                           color: Colors.white,
                           fontSize: 20,
                           fontFamily: "QueenBold"),
-                    )),
+                    )
+                ),
                 Card(
-                  margin: EdgeInsets.only(left: 95, right: 5, bottom: 10),
+                  margin: EdgeInsets.only(left: 95, right: 20, bottom: 10),
                   color: Colors.white,
                   child: Text(
                     " Garagiste ",
@@ -61,7 +62,7 @@ class NavBarState extends State<NavBar> {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.bookmark, color: Colors.black87),
+            leading: Icon(Icons.person, color: Colors.black87),
             title: Text(
               'Mon espace',
               style: TextStyle(
@@ -100,7 +101,7 @@ class NavBarState extends State<NavBar> {
                 );
               }),
           ListTile(
-              leading: Icon(FontAwesomeIcons.bookOpen, color: Colors.black87),
+              leading: Icon(FontAwesomeIcons.carAlt, color: Colors.black87),
               title: Text(
                 'Nos Services',
                 style: TextStyle(
@@ -119,7 +120,7 @@ class NavBarState extends State<NavBar> {
                 );
               }),
           ListTile(
-              leading: Icon(Icons.restaurant_menu, color: Colors.black87),
+              leading: Icon(FontAwesomeIcons.wrench, color: Colors.black87),
               title: Text(
                 'Prestations',
                 style: TextStyle(
@@ -158,7 +159,7 @@ class NavBarState extends State<NavBar> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.bookmark, color: Colors.black87),
+            leading: Icon(Icons.blur_on, color: Colors.black87),
             title: Text(
               'Actualités',
               style: TextStyle(

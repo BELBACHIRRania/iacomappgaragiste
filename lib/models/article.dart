@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-List<VehiculeN> vehiculeNFromJson(String str) =>
-    List<VehiculeN>.from(json.decode(str).map((x) => VehiculeN.fromMap(x)));
+List<Article> articleFromJson(String str) =>
+    List<Article>.from(json.decode(str).map((x) => Article.fromMap(x)));
 
-String vehiculeNToJson(List<VehiculeN> data) =>
+String articleToJson(List<Article> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class VehiculeN {
+class Article {
   String id_act;
   String nom_art;
   String prix_art;
@@ -15,7 +15,7 @@ class VehiculeN {
   String image_art;
   String sous_titre;
 
-  VehiculeN({
+  Article({
     this.id_act,
     this.nom_art,
     this.prix_art,
@@ -25,7 +25,7 @@ class VehiculeN {
     this.sous_titre,
   });
 
-  factory VehiculeN.fromMap(Map<String, dynamic> json) => VehiculeN(
+  factory Article.fromMap(Map<String, dynamic> json) => Article(
         id_act: json["id_act"],
         nom_art: json["nom_art"],
         prix_art: json["prix_art"],

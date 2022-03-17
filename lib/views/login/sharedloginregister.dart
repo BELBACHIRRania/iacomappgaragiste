@@ -203,7 +203,7 @@ class _LoginState extends State<Login> {
                             },
                             onSaved: (e) => email = e,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.w300,
                             ),
@@ -212,13 +212,13 @@ class _LoginState extends State<Login> {
                                 prefixIcon: Padding(
                                   padding: EdgeInsets.only(left: 20, right: 15),
                                   child:
-                                      Icon(Icons.person, color: Colors.black),
+                                      Icon(Icons.person, color: Colors.white),
                                 ),
                                 contentPadding: EdgeInsets.all(10),
                                 labelStyle: TextStyle(
                                     fontSize: 14,
                                     fontFamily: "Queen",
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.w900),
                                 labelText: "E-mail"),
                           ),
@@ -242,7 +242,7 @@ class _LoginState extends State<Login> {
                             },
                             obscureText: _secureText,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.w300,
                             ),
@@ -252,18 +252,18 @@ class _LoginState extends State<Login> {
                               labelStyle: TextStyle(
                                   fontSize: 14,
                                   fontFamily: "Queen",
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.w900),
                               prefixIcon: Padding(
                                 padding: EdgeInsets.only(left: 20, right: 15),
                                 child: Icon(Icons.phonelink_lock,
-                                    color: Colors.black),
+                                    color: Colors.white),
                               ),
                               suffixIcon: IconButton(
                                 onPressed: showHide,
                                 icon: Icon(_secureText
                                     ? Icons.visibility_off
-                                    : Icons.visibility),
+                                    : Icons.visibility, color: Colors.white,),
                               ),
                               contentPadding: EdgeInsets.all(10),
                             ),
@@ -539,7 +539,7 @@ class _RegisterState extends State<Register> {
                         },
                         onSaved: (e) => name = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -547,13 +547,13 @@ class _RegisterState extends State<Register> {
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.person, color: Colors.black),
+                              child: Icon(Icons.person, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Nom et Prénom"),
                       ),
@@ -577,7 +577,7 @@ class _RegisterState extends State<Register> {
                         },
                         onSaved: (e) => email = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -585,13 +585,13 @@ class _RegisterState extends State<Register> {
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.email, color: Colors.black),
+                              child: Icon(Icons.email, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Email"),
                       ),
@@ -613,7 +613,7 @@ class _RegisterState extends State<Register> {
                         },
                         onSaved: (e) => mobile = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -621,14 +621,14 @@ class _RegisterState extends State<Register> {
                           border: InputBorder.none,
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 20, right: 15),
-                            child: Icon(Icons.phone, color: Colors.black),
+                            child: Icon(Icons.phone, color: Colors.white),
                           ),
                           contentPadding: EdgeInsets.all(10),
                           labelText: "Numéro de téléphone",
                           labelStyle: TextStyle(
                               fontSize: 14,
                               fontFamily: "Queen",
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.w900),
                         ),
                         keyboardType: TextInputType.number,
@@ -653,7 +653,7 @@ class _RegisterState extends State<Register> {
                         onSaved: (e) => password = e,
                         style: TextStyle(
                           decoration: TextDecoration.none,
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -663,18 +663,18 @@ class _RegisterState extends State<Register> {
                               onPressed: showHide,
                               icon: Icon(_secureText
                                   ? Icons.visibility_off
-                                  : Icons.visibility),
+                                  : Icons.visibility,color: Colors.white,),
                             ),
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
                               child: Icon(Icons.phonelink_lock,
-                                  color: Colors.black),
+                                  color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Mot de passe"),
                       ),
@@ -856,8 +856,7 @@ class _MainMenuState extends State<MainMenu> {
         textColor: Colors.white);
   }
 
-  savePref(String email, String name, String password, String mobile,
-      String id_user, String status, String actif, String points) async {
+  savePref(String email, String name, String password, String mobile, String id_user, String status, String actif, String points) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setString("name", name);
@@ -876,7 +875,7 @@ class _MainMenuState extends State<MainMenu> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         endDrawer: NavBar(),
         appBar: AppBar(
           backgroundColor: Color(0xFF4267B2),
@@ -949,7 +948,7 @@ class _MainMenuState extends State<MainMenu> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Icon(Icons.person),
+                                  Icon(Icons.person, color: Colors.white,),
                                   SizedBox(
                                     width: 25,
                                   ),
@@ -958,7 +957,7 @@ class _MainMenuState extends State<MainMenu> {
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontFamily: "Queen",
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w900),
                                   ),
                                 ]),
@@ -985,7 +984,7 @@ class _MainMenuState extends State<MainMenu> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Icon(Icons.phonelink_lock),
+                                  Icon(Icons.phonelink_lock,color: Colors.white,),
                                   SizedBox(
                                     width: 25,
                                   ),
@@ -994,7 +993,7 @@ class _MainMenuState extends State<MainMenu> {
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontFamily: "Queen",
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w900),
                                   ),
                                 ]),
@@ -1039,11 +1038,11 @@ class _MainMenuState extends State<MainMenu> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontFamily: "Queen",
-                                            color: Colors.black,
+                                            color: Colors.white,
                                             fontWeight: FontWeight.w900),
                                       ),
                                     ]),
-                                textColor: Colors.black,
+                                textColor: Colors.white,
                                 color: Color(0xFF4267B2),
                                 onPressed: () async {
                                   await point();
@@ -1076,7 +1075,7 @@ class _MainMenuState extends State<MainMenu> {
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
-                                      Icon(Icons.filter_center_focus),
+                                      Icon(Icons.filter_center_focus,color: Colors.white,),
                                       SizedBox(
                                         width: 25,
                                       ),
@@ -1085,7 +1084,7 @@ class _MainMenuState extends State<MainMenu> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontFamily: "Queen",
-                                            color: Colors.black,
+                                            color: Colors.white,
                                             fontWeight: FontWeight.w900),
                                       ),
                                     ]),
@@ -1196,7 +1195,7 @@ class _MainMenuState extends State<MainMenu> {
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
-                                      Icon(Icons.blur_on),
+                                      Icon(Icons.blur_on,color: Colors.white,),
                                       SizedBox(
                                         width: 25,
                                       ),
@@ -1205,7 +1204,7 @@ class _MainMenuState extends State<MainMenu> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontFamily: "Queen",
-                                            color: Colors.black,
+                                            color: Colors.white,
                                             fontWeight: FontWeight.w900),
                                       ),
                                     ]),
@@ -1240,7 +1239,7 @@ class _MainMenuState extends State<MainMenu> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Icon(Icons.lock_open),
+                                  Icon(Icons.lock_open,color: Colors.white,),
                                   SizedBox(
                                     width: 25,
                                   ),
@@ -1249,15 +1248,16 @@ class _MainMenuState extends State<MainMenu> {
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontFamily: "Queen",
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w900),
                                   ),
                                 ]),
                             textColor: Colors.black,
                             color: Color(0xFF4267B2),
-                            onPressed: () {
-                              signOut();
-                            }),
+                            onPressed: () async{
+                              await signOut();
+                            }
+                            ),
                       ),
                     ],
                   ),
@@ -1414,7 +1414,7 @@ class _VerifyState extends State<Verify> {
                         controller: _otpController,
                         style: TextStyle(
                           decoration: TextDecoration.none,
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -1423,13 +1423,13 @@ class _VerifyState extends State<Verify> {
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
                               child: Icon(Icons.phonelink_lock,
-                                  color: Colors.black),
+                                  color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Code"),
                       ),

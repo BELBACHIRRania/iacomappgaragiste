@@ -118,7 +118,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIos: 1,
-        backgroundColor: Color(0xFFFFCC80),
+        backgroundColor: Color(0xFF4267B2),
         textColor: Colors.white);
   }
 
@@ -233,7 +233,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
               height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                   gradient: LinearGradient(
-                colors: [Color(0xFFFFCC80), Colors.white],
+                colors: [Color(0xFF4267B2), Colors.white],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               )),
@@ -271,7 +271,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                       height: 20,
                     ),
                     Card(
-                      color: Color(0xFFFFCC80),
+                      color: Color(0xFF4267B2),
                       margin:
                           const EdgeInsets.only(right: 60, left: 60, top: 10),
                       shape: RoundedRectangleBorder(
@@ -280,27 +280,26 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                       child: TextFormField(
                         onSaved: (e) => titre = e,
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            fontFamily: "Champagne&LimousinesBold"),
+                            fontWeight: FontWeight.w300,),
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.blur_on, color: Colors.black),
+                              child: Icon(Icons.blur_on, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Titre"),
                       ),
                     ),
                     Card(
-                      color: Color(0xFFFFCC80),
+                      color: Color(0xFF4267B2),
                       margin: const EdgeInsets.only(
                           right: 60, left: 60, top: 10, bottom: 10),
                       shape: RoundedRectangleBorder(
@@ -311,22 +310,21 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                         maxLines: null,
                         onSaved: (e) => description = e,
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            fontFamily: "Champagne&LimousinesBold"),
+                            fontWeight: FontWeight.w300,),
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.blur_on, color: Colors.black),
+                              child: Icon(Icons.blur_on, color: Colors.white),
                             ),
                             isDense: true,
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Description"),
                       ),
@@ -392,10 +390,10 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 fontFamily: "Queen",
-                                                color: Colors.black,
+                                                color: Colors.white,
                                                 fontWeight: FontWeight.w900),
                                           ),
-                                          color: Color(0xFFFFCC80),
+                                          color: Color(0xFF4267B2),
                                           onPressed: () {
                                             chooseImage();
                                           }),
@@ -409,7 +407,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                       ),
                     ),
                     Card(
-                      color: Color(0xFFFFCC80),
+                      color: Color(0xFF4267B2),
                       margin:
                           const EdgeInsets.only(right: 60, left: 60, top: 10),
                       shape: RoundedRectangleBorder(
@@ -418,27 +416,26 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                       child: TextFormField(
                         onSaved: (e) => morelink = e,
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            fontFamily: "Champagne&LimousinesBold"),
+                            fontWeight: FontWeight.w300,),
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.blur_on, color: Colors.black),
+                              child: Icon(Icons.blur_on, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Lien"),
                       ),
                     ),
                     Card(
-                      color: Color(0xFFFFCC80),
+                      color: Color(0xFF4267B2),
                       margin:
                           const EdgeInsets.only(right: 60, left: 60, top: 10),
                       shape: RoundedRectangleBorder(
@@ -447,21 +444,20 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                       child: TextFormField(
                         onSaved: (e) => moreTextlink = e,
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            fontFamily: "Champagne&LimousinesBold"),
+                            fontWeight: FontWeight.w300,),
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.blur_on, color: Colors.black),
+                              child: Icon(Icons.blur_on, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Source"),
                       ),
@@ -500,7 +496,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                             Radio(
                                 value: 1,
                                 groupValue: selectedRadio,
-                                activeColor: Color(0xFFFFCC80),
+                                activeColor: Color(0xFF4267B2),
                                 onChanged: (val) {
                                   print(val);
                                   setSelectedRadio(val);
@@ -517,7 +513,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
                             Radio(
                                 value: 0,
                                 groupValue: selectedRadio,
-                                activeColor: Color(0xFFFFCC80),
+                                activeColor: Color(0xFF4267B2),
                                 onChanged: (val) {
                                   print(val);
                                   setSelectedRadio(val);

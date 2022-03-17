@@ -50,9 +50,10 @@ class _PointsState extends State<Points> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       endDrawer: NavBar(),
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFCC80),
+        backgroundColor: Color(0xFF4267B2),
         elevation: 0,
         automaticallyImplyLeading: false,
         title: Row(
@@ -113,7 +114,7 @@ class _PointsState extends State<Points> {
                     Container(
                       width: 300,
                       child: Text(
-                        "Gagnez des points de fidélité avec votre application IΛCOM",
+                        "Gagnez des points de fidélité avec votre application IΛCOM Garagiste",
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: "Queen",
@@ -131,7 +132,7 @@ class _PointsState extends State<Points> {
                             topLeft: Radius.circular(20),
                             topRight: Radius.circular(20)),
                         child: Container(
-                          color: Color(0xFFFFB74D),
+                          color: Color(0xFF4267B2),
                           height: 200,
                           width: 250,
                           child: Align(
@@ -145,7 +146,7 @@ class _PointsState extends State<Points> {
                                   topLeft: Radius.circular(20),
                                   topRight: Radius.circular(20)),
                               child: Container(
-                                  color: Color(0xFFFFCC80),
+                                  color: Color(0xFFb0caff),
                                   height: 150,
                                   width: 200,
                                   child: Center(

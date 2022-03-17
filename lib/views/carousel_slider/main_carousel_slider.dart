@@ -13,10 +13,10 @@ class CarouselDemoState extends State<CarouselDemo> {
   CarouselSlider carouselSlider;
   int _current = 0;
   List imgList = [
-    'assets/images/2.jpg',
-    'assets/images/20.png',
-    'assets/images/21.png',
-    'assets/images/23.png'
+    'assets/images/garagiste_7.png',
+    'assets/images/garagiste_8.png',
+    'assets/images/garagiste_9.png',
+    'assets/images/garagiste_10.png'
   ];
 
   List<T> map<T>(List list, Function handler) {

@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iacomappgaragiste/models/vehicule_neuf.dart';
+import 'package:iacomappgaragiste/models/article.dart';
 
 class VehiculeNDetailsScreen extends StatelessWidget {
-  final VehiculeN vehiculeN;
+  final Article vehiculeN;
 
   VehiculeNDetailsScreen(this.vehiculeN);
 

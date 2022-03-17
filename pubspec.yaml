@@ -66,15 +66,10 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/images/background.png
-    - assets/images/7.png
-    - assets/images/13.png
-    - assets/images/6.png
-    - assets/images/20.png
-    - assets/images/21.png
-    - assets/images/23.png
-    - assets/images/25.png
-    - assets/images/2.jpg
+    - assets/images/garagiste_7.png
+    - assets/images/garagiste_8.png
+    - assets/images/garagiste_9.png
+    - assets/images/garagiste_10.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

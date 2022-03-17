@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
-import 'package:iacomappgaragiste/models/vehicule_neuf.dart';
+import 'package:iacomappgaragiste/models/article.dart';
 
-Future<List<VehiculeN>> fetchVehiculeN() async {
+Future<List<Article>> fetchArticle() async {
   String url = "http://iacomapp.cest-la-base.fr/vehicule_neuf.php";
   final response = await http.get(url);
-  return vehiculeNFromJson(response.body);
+  return articleFromJson(response.body);
 }

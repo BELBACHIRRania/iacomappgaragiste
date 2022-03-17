@@ -10,8 +10,7 @@ class ModifierProfil extends StatefulWidget {
   final String id_user, email, name, mobile, password;
   final VoidCallback signOut;
 
-  ModifierProfil(this.id_user, this.email, this.name, this.mobile,
-      this.password, this.signOut);
+  ModifierProfil(this.id_user, this.email, this.name, this.mobile, this.password, this.signOut);
 
   @override
   _ModifierProfilState createState() => _ModifierProfilState();
@@ -27,10 +26,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
   final _key = new GlobalKey<FormState>();
 
   TextEditingController txtname,
-      txtmobile,
-      txtpassword,
-      txtnewpassword,
-      txtconfirmnewpassword;
+      txtmobile;
 
   signOut() {
     setState(() {
@@ -41,18 +37,9 @@ class _ModifierProfilState extends State<ModifierProfil> {
   setup() {
     txtname = TextEditingController(text: widget.name);
     txtmobile = TextEditingController(text: widget.mobile);
-    txtpassword = TextEditingController();
-    txtnewpassword = TextEditingController();
-    txtconfirmnewpassword = TextEditingController();
   }
 
   bool _secureText = true;
-
-  showHide() {
-    setState(() {
-      _secureText = !_secureText;
-    });
-  }
 
   check() {
     final form = _key.currentState;
@@ -68,7 +55,6 @@ class _ModifierProfilState extends State<ModifierProfil> {
       "id_user": widget.id_user,
       "name": name,
       "mobile": mobile,
-      "password": password,
     });
 
     final data = jsonDecode(response.body);
@@ -115,12 +101,11 @@ class _ModifierProfilState extends State<ModifierProfil> {
     setup();
   }
 
-  savePref(String name, String mobile, String password) async {
+  savePref(String name, String mobile) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setString("name", name);
       preferences.setString("mobile", mobile);
-      preferences.setString("password", password);
       preferences.commit();
     });
   }
@@ -128,7 +113,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       endDrawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color(0xFF4267B2),
@@ -186,7 +171,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
                         controller: txtname,
                         onSaved: (e) => name = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -194,13 +179,13 @@ class _ModifierProfilState extends State<ModifierProfil> {
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.person, color: Colors.black),
+                              child: Icon(Icons.person, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Nom et Prénom"),
                       ),
@@ -223,7 +208,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
                         },
                         onSaved: (e) => mobile = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -231,13 +216,13 @@ class _ModifierProfilState extends State<ModifierProfil> {
                           border: InputBorder.none,
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 20, right: 15),
-                            child: Icon(Icons.phone, color: Colors.black),
+                            child: Icon(Icons.phone, color: Colors.white),
                           ),
                           contentPadding: EdgeInsets.all(10),
                           labelStyle: TextStyle(
                               fontSize: 14,
                               fontFamily: "Queen",
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.w900),
                           labelText: "Numéro de téléphone",
                         ),
@@ -265,7 +250,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
                           color: Colors.white,
                           onPressed: () {
                             check();
-                            savePref(name, mobile, password);
+                            savePref(name, mobile);
                           }),
                     ),
                   ],

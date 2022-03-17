@@ -88,7 +88,7 @@ class _ModifierPasswordState extends State<ModifierPassword> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIos: 1,
-        backgroundColor: Color(0xFFFFCC80),
+        backgroundColor: Color(0xFF4267B2),
         textColor: Colors.white);
   }
 
@@ -120,7 +120,7 @@ class _ModifierPasswordState extends State<ModifierPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       endDrawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color(0xFF4267B2),
@@ -187,7 +187,7 @@ class _ModifierPasswordState extends State<ModifierPassword> {
                         },
                         obscureText: _secureText,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -197,19 +197,19 @@ class _ModifierPasswordState extends State<ModifierPassword> {
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 20, right: 15),
                             child:
-                                Icon(Icons.phonelink_lock, color: Colors.black),
+                                Icon(Icons.phonelink_lock, color: Colors.white),
                           ),
                           suffixIcon: IconButton(
                             onPressed: showHide,
                             icon: Icon(_secureText
                                 ? Icons.visibility_off
-                                : Icons.visibility),
+                                : Icons.visibility, color: Colors.white,),
                           ),
                           contentPadding: EdgeInsets.all(10),
                           labelStyle: TextStyle(
                               fontSize: 14,
                               fontFamily: "Queen",
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.w900),
                         ),
                       ),
@@ -235,7 +235,7 @@ class _ModifierPasswordState extends State<ModifierPassword> {
                         },
                         obscureText: _secureText,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -245,19 +245,19 @@ class _ModifierPasswordState extends State<ModifierPassword> {
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 20, right: 15),
                             child:
-                                Icon(Icons.phonelink_lock, color: Colors.black),
+                                Icon(Icons.phonelink_lock, color: Colors.white),
                           ),
                           suffixIcon: IconButton(
                             onPressed: showHide,
                             icon: Icon(_secureText
                                 ? Icons.visibility_off
-                                : Icons.visibility),
+                                : Icons.visibility, color: Colors.white,),
                           ),
                           contentPadding: EdgeInsets.all(10),
                           labelStyle: TextStyle(
                               fontSize: 14,
                               fontFamily: "Queen",
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.w900),
                         ),
                       ),
@@ -284,7 +284,7 @@ class _ModifierPasswordState extends State<ModifierPassword> {
                         },
                         obscureText: _secureText,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -294,19 +294,19 @@ class _ModifierPasswordState extends State<ModifierPassword> {
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 20, right: 15),
                             child:
-                                Icon(Icons.phonelink_lock, color: Colors.black),
+                                Icon(Icons.phonelink_lock, color: Colors.white),
                           ),
                           suffixIcon: IconButton(
                             onPressed: showHide,
                             icon: Icon(_secureText
                                 ? Icons.visibility_off
-                                : Icons.visibility),
+                                : Icons.visibility, color: Colors.white,),
                           ),
                           contentPadding: EdgeInsets.all(10),
                           labelStyle: TextStyle(
                               fontSize: 14,
                               fontFamily: "Queen",
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.w900),
                         ),
                       ),
@@ -332,7 +332,7 @@ class _ModifierPasswordState extends State<ModifierPassword> {
                           color: Colors.white,
                           onPressed: () async {
                             check();
-                            await savePref(password);
+                            await savePref(password,);
                             print(password);
                           }),
                     ),

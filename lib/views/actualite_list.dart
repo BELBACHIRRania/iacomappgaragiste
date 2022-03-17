@@ -9,7 +9,7 @@ class ActualiteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       endDrawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color(0xFF4267B2),
@@ -64,7 +64,7 @@ class ActualiteScreen extends StatelessWidget {
                         margin: EdgeInsets.only(
                             left: 20, right: 15, top: 5, bottom: 5),
                         decoration: BoxDecoration(
-                          color: Color(0xFF212121),
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(

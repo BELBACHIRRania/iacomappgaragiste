@@ -13,7 +13,7 @@ class ActualiteDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       endDrawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color(0xFF4267B2),
@@ -76,7 +76,7 @@ class ActualiteDetailsScreen extends StatelessWidget {
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                       fontSize: 22.0,
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.w900),
                 ),
               ),
@@ -85,7 +85,7 @@ class ActualiteDetailsScreen extends StatelessWidget {
                 child: Text(
                   '${actualite.description_act}',
                   textAlign: TextAlign.justify,
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(fontSize: 15, color: Colors.black),
                 ),
               ),
               Padding(

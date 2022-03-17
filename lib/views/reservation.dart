@@ -42,14 +42,13 @@ class _ReservationState extends State<Reservation> {
 
   submit() async {
     final response = await http
-        .post("http://iacomapp.cest-la-base.fr/reservation.php", body: {
+        .post("http://iacomapp.cest-la-base.fr/reservation_garagiste.php", body: {
       "nom": nom,
       "mail": mail,
       "tel": tel,
       "nb_personne": selectedPersonne,
       "info_complementaire": detail,
       "dates_resa": "${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())}".split(' ')[0],
-      "mapp_id": '29',
       "heure_resa": '${time.hour}:${time.minute}',
     });
     final data = jsonDecode(response.body);
@@ -74,7 +73,7 @@ class _ReservationState extends State<Reservation> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIos: 2,
-        backgroundColor: Color(0xFFFFB74D),
+        backgroundColor: Color(0xFF4267B2),
         textColor: Colors.white);
   }
   /////////////////////////////////////////////////date picker //////////////////////////////////////////////////////////
@@ -94,9 +93,9 @@ class _ReservationState extends State<Reservation> {
         builder: (context, child) {
           return Theme(
             data: ThemeData(
-              primaryColor: const Color(0xFFFFCC80),
-              accentColor: const Color(0xFFFFCC80),
-              colorScheme: ColorScheme.light(primary: const Color(0xFFFFCC80),),
+              primaryColor: const Color(0xFF4267B2),
+              accentColor: const Color(0xFF4267B2),
+              colorScheme: ColorScheme.light(primary: const Color(0xFF4267B2),),
               buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),
             child: child,
@@ -190,7 +189,7 @@ class _ReservationState extends State<Reservation> {
                         "RÉSERVEZ MAINTENANT!",
                         style: TextStyle(
                           fontSize: 13.7,
-                          color: Colors.white,
+                          color: Colors.black,
                           fontFamily: "QueenBold",
                         ),
                       ),
@@ -199,7 +198,7 @@ class _ReservationState extends State<Reservation> {
                       height: 20,
                     ),
                     Card(
-                      color: Color(0xFF5a8df2),
+                      color: Color(0xFF4267B2),
                       margin: const EdgeInsets.only(
                           right: 60, left: 60, bottom: 10, top: 10),
                       elevation: 6.0,
@@ -209,7 +208,7 @@ class _ReservationState extends State<Reservation> {
                       child: TextFormField(
                         onSaved: (e) => nom = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -217,19 +216,19 @@ class _ReservationState extends State<Reservation> {
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.person, color: Colors.black),
+                              child: Icon(Icons.person, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Nom et Prénom"),
                       ),
                     ),
                     Card(
-                      color: Color(0xFF5a8df2),
+                      color: Color(0xFF4267B2),
                       margin: const EdgeInsets.only(
                           right: 60, left: 60, bottom: 10, top: 10),
                       elevation: 6.0,
@@ -247,7 +246,7 @@ class _ReservationState extends State<Reservation> {
                         },
                         onSaved: (e) => mail = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -255,19 +254,19 @@ class _ReservationState extends State<Reservation> {
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.mail, color: Colors.black),
+                              child: Icon(Icons.mail, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "E-mail"),
                       ),
                     ),
                     Card(
-                      color: Color(0xFF5a8df2),
+                      color: Color(0xFF4267B2),
                       margin: const EdgeInsets.only(
                           right: 60, left: 60, bottom: 10, top: 10),
                       elevation: 6.0,
@@ -285,7 +284,7 @@ class _ReservationState extends State<Reservation> {
                         },
                         onSaved: (e) => tel = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -293,19 +292,19 @@ class _ReservationState extends State<Reservation> {
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.phone, color: Colors.black),
+                              child: Icon(Icons.phone, color: Colors.white),
                             ),
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Téléphone"),
                       ),
                     ),
                     Card(
-                      color: Color(0xFF5a8df2),
+                      color: Color(0xFF4267B2),
                       margin: const EdgeInsets.only(
                           right: 60, left: 60, bottom: 10, top: 10),
                       elevation: 6.0,
@@ -320,13 +319,13 @@ class _ReservationState extends State<Reservation> {
                                   EdgeInsets.only(left: 60, top: 11, right: 20),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton(
-                                  dropdownColor: Color(0xFFFFE0B2),
+                                  dropdownColor: Color(0xFF5689f0),
                                   hint: Text(
                                     'Nombre de personne',
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontFamily: "Queen",
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w900),
                                   ),
                                   value: selectedPersonne,
@@ -347,7 +346,7 @@ class _ReservationState extends State<Reservation> {
                       ),
                     ),
                     Card(
-                      color: Color(0xFF5a8df2),
+                      color: Color(0xFF4267B2),
                       margin: const EdgeInsets.only(
                           right: 60, left: 60, bottom: 10, top: 10),
                       elevation: 6.0,
@@ -359,7 +358,7 @@ class _ReservationState extends State<Reservation> {
                         maxLines: null,
                         onSaved: (e) => detail = e,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                         ),
@@ -367,101 +366,101 @@ class _ReservationState extends State<Reservation> {
                             border: InputBorder.none,
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.blur_on, color: Colors.black),
+                              child: Icon(Icons.blur_on, color: Colors.white),
                             ),
                             isDense: true,
                             contentPadding: EdgeInsets.all(10),
                             labelStyle: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Queen",
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w900),
                             labelText: "Détail sur votre réservation"),
                       ),
                     ),
-                    Card(
-                      margin: const EdgeInsets.only(
-                          right: 60, left: 60, bottom: 10, top: 10),
-                      color: Color(0xFF5a8df2),
-                      elevation: 6.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          GestureDetector(
-                              onTap: () async {
-                                await _selectDateResa(context);
-                              },
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Icon(FontAwesomeIcons.calendarAlt,
-                                      color: Colors.black),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 10, bottom: 5, top: 5),
-                                        child: Text(
-                                          "Date réservation",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: "Queen",
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w900),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 10, bottom: 5, top: 5),
-                                        child: Text(
-                                          "${DateFormat('dd/MM/yyyy').format(selectedDateResa.toLocal())}"
-                                              .split(' ')[0],
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: "Queen",
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w900),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ))
-                        ],
-                      ),
+                    GestureDetector(
+                  onTap: () async {
+                    await _selectDateResa(context);
+                  },
+                  child:Card(
+                    margin: const EdgeInsets.only(
+                        right: 60, left: 60, bottom: 10, top: 10),
+                    color: Color(0xFF4267B2),
+                    elevation: 6.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
-                    Card(
-                      margin: const EdgeInsets.only(
-                          right: 60, left: 60, bottom: 10, top: 10),
-                      color: Color(0xFF5a8df2),
-                      elevation: 6.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          GestureDetector(
-                              onTap: () async {
-                                await selectTime(context);
-                              },
-                              child: Row(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Icon(FontAwesomeIcons.calendarAlt,
+                                color: Colors.white),
+                            Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(
+                                      left: 10, bottom: 5, top: 5),
+                                  child: Text(
+                                    "Date réservation",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: "Queen",
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(
+                                      left: 10, bottom: 5, top: 5),
+                                  child: Text(
+                                    "${DateFormat('dd/MM/yyyy').format(selectedDateResa.toLocal())}"
+                                        .split(' ')[0],
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: "Queen",
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                    GestureDetector(
+                        onTap: () async {
+                          await selectTime(context);
+                        },
+                        child:Card(
+                          margin: const EdgeInsets.only(
+                              right: 60, left: 60, bottom: 10, top: 10),
+                          color: Color(0xFF4267B2),
+                          elevation: 6.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Row(
                                 children: [
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  Icon(Icons.watch_later,
-                                      color: Colors.black),
+                                  Icon(Icons.watch_later, color: Colors.white),
                                   Column(
                                     crossAxisAlignment:
                                     CrossAxisAlignment.start,
@@ -474,7 +473,7 @@ class _ReservationState extends State<Reservation> {
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontFamily: "Queen",
-                                              color: Colors.black,
+                                              color: Colors.white,
                                               fontWeight: FontWeight.w900),
                                         ),
                                       ),
@@ -489,16 +488,17 @@ class _ReservationState extends State<Reservation> {
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontFamily: "Queen",
-                                              color: Colors.black,
+                                              color: Colors.white,
                                               fontWeight: FontWeight.w900),
                                         ),
                                       )
                                     ],
                                   )
                                 ],
-                              ))
-                        ],
-                      ),
+                              )
+                            ],
+                          ),
+                        ),
                     ),
                     SizedBox(
                       height: 20,
