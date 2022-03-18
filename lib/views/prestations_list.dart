@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iacomappgaragiste/models/article.dart';
 import 'package:iacomappgaragiste/services/prestations-api.dart';
 import 'package:iacomappgaragiste/views/nav_bar.dart';
@@ -25,13 +24,13 @@ class _PrestationsState extends State<Prestations> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              width: 150,
+              width: 130,
             ),
             Container(
                 child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      "Prestation",
+                      "Prestations",
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,

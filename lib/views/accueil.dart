@@ -18,13 +18,13 @@ class Accueil extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
-                width: 90,
+                width: 105,
               ),
               Container(
                   child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        "IΛCOM Garagiste",
+                        "IΛCOM Garage",
                         style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,

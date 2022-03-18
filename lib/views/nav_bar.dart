@@ -51,7 +51,7 @@ class NavBarState extends State<NavBar> {
                   margin: EdgeInsets.only(left: 95, right: 20, bottom: 10),
                   color: Colors.white,
                   child: Text(
-                    " Garagiste ",
+                    " Garage ",
                     style: TextStyle(
                         color: Color(0xFF4267B2),
                         fontSize: 20,

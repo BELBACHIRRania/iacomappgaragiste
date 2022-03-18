@@ -130,7 +130,7 @@ class SplashState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin: const EdgeInsets.only(right: 90),
+            margin: const EdgeInsets.only(right: 40),
             child: Text(
               "IΛCOM",
               style: TextStyle(
@@ -140,11 +140,11 @@ class SplashState extends State<SplashScreen> {
             ),
           ),
           Container(
-              margin: const EdgeInsets.only(left: 170),
+              margin: const EdgeInsets.only(left: 180),
             child: Card(
               color: Color(0xFF4267B2),
               child: Text(
-                " GARAGISTE ",
+                " GARAGE ",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 23,
