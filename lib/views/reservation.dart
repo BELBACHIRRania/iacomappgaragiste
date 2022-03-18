@@ -16,19 +16,28 @@ class Reservation extends StatefulWidget {
 class _ReservationState extends State<Reservation> {
   final _key = new GlobalKey<FormState>();
 
-  List<String> listPersonne = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10'
-  ]; // Option 2
-  String selectedPersonne;
+  List dataAllVN = List();
+  List dataAllVO = List();
+  String selectedVN = null;
+  String selectedVO= null;
+
+  Future getAllVN()async{
+    var response = await http.get("http://iacomapp.cest-la-base.fr/vehicule_neuf.php", headers: {"Accept":"application/json"});
+    var jsonBody = response.body;
+    var jsonData = json.decode(jsonBody);
+    setState((){
+      dataAllVN = jsonData;
+    });
+  }
+  Future getAllVO()async{
+    var response = await http.get("http://iacomapp.cest-la-base.fr/vehicule_occasion.php", headers: {"Accept":"application/json"});
+    var jsonBody = response.body;
+    var jsonData = json.decode(jsonBody);
+    setState((){
+      dataAllVO = jsonData;
+    });
+  }
+
 
   String nom = "", mail = "", tel = "", detail = "";
 
@@ -46,7 +55,8 @@ class _ReservationState extends State<Reservation> {
       "nom": nom,
       "mail": mail,
       "tel": tel,
-      "nb_personne": selectedPersonne,
+      "vehicule_n": selectedVN,
+      "vehicule_o": selectedVO,
       "info_complementaire": detail,
       "dates_resa": "${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())}".split(' ')[0],
       "heure_resa": '${time.hour}:${time.minute}',
@@ -117,6 +127,8 @@ class _ReservationState extends State<Reservation> {
   void initState(){
     super.initState();
     time = TimeOfDay.now();
+    getAllVN();
+    getAllVO();
   }
 
   Future<Null> selectTime(BuildContext context) async{
@@ -321,23 +333,67 @@ class _ReservationState extends State<Reservation> {
                                 child: DropdownButton(
                                   dropdownColor: Color(0xFF5689f0),
                                   hint: Text(
-                                    'Nombre de personne',
+                                    'Véhicule neuf',
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontFamily: "Queen",
                                         color: Colors.white,
                                         fontWeight: FontWeight.w900),
                                   ),
-                                  value: selectedPersonne,
+                                  value: selectedVN,
                                   onChanged: (newValue) async {
+                                    selectedVN = "";
                                     setState(() {
-                                      selectedPersonne = newValue;
+                                      selectedVN = newValue;
                                     });
                                   },
-                                  items: listPersonne.map((location) {
+                                  items: dataAllVN.map((list) {
                                     return DropdownMenuItem(
-                                      child: new Text(location),
-                                      value: location,
+                                      child: new Text(list['nom_art']),
+                                      value: list['nom_art'].toString(),
+                                    );
+                                  }).toList(),
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                    Card(
+                      color: Color(0xFF4267B2),
+                      margin: const EdgeInsets.only(
+                          right: 60, left: 60, bottom: 10, top: 10),
+                      elevation: 6.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Container(
+                              padding:
+                                  EdgeInsets.only(left: 60, top: 11, right: 20),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  dropdownColor: Color(0xFF5689f0),
+                                  hint: Text(
+                                    "Véhicule d'occasion",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: "Queen",
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                  value: selectedVO,
+                                  onChanged: (newValue) async {
+                                    selectedVO = "";
+                                    setState(() {
+                                      selectedVO = newValue;
+                                    });
+                                  },
+                                  items: dataAllVO.map((list) {
+                                    return DropdownMenuItem(
+                                      child: new Text(list['nom_art'],style: TextStyle(color: Colors.white,fontSize: 14,) ),
+                                      value: list['nom_art'].toString(),
                                     );
                                   }).toList(),
                                 ),
