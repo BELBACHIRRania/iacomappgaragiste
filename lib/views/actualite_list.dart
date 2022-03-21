@@ -61,8 +61,7 @@ class ActualiteScreen extends StatelessWidget {
                     itemBuilder: (BuildContext context, index) {
                       Actualite actualite = snapshot.data[index];
                       return Container(
-                        margin: EdgeInsets.only(
-                            left: 20, right: 15, top: 5, bottom: 5),
+                        margin: EdgeInsets.only(left: 20, right: 15, top: 5, bottom: 5),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
@@ -108,7 +107,7 @@ class ActualiteScreen extends StatelessWidget {
                                   '${actualite.titre_act}',
                                   style: TextStyle(
                                       fontSize: 15,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontWeight: FontWeight.w900),
                                 ),
                               ),
@@ -121,7 +120,7 @@ class ActualiteScreen extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
                                   style: TextStyle(
-                                      fontSize: 13, color: Colors.white),
+                                      fontSize: 13, color: Colors.black),
                                 ),
                               ),
                               SizedBox(height: 10),

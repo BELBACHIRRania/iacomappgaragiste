@@ -42,7 +42,7 @@ class Accueil extends StatelessWidget {
                       Container(height: 230, child: CarouselDemo()),
                       SizedBox(height: 5),
                       Container(
-                    height: 400,
+                    height: 320,
                     width: 500,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -60,9 +60,8 @@ class Accueil extends StatelessWidget {
                     padding:
                         EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
                     child: Text(
-                        "IΛCOM Restaurant est un restaurant asiatique situé dans le département de la Gironde, à Bassens. Spécialisés dans la cuisine japonaise et thaïlandaise, nous vous proposons le meilleur Sushi à Bassens\n"
-                        "\nDe la décoration jusqu’à dans l'assiette notre maître mot est le dépaysement. La légendaire zénitude asiatique s’exprime à travers une décoration branchée aux tons neutres, un cadre en osmose avec la musique d’ambiance aux airs chill-out. Fraîcheur et qualité supérieure sont les mots d’ordre côté cuisine. ",
-                        style: TextStyle(
+                        "Le garage IACOM vous accueille à Biarritz(64), dans le département des Pyrénées-Atlantiques en région Aquitaine.\n"
+                            "Votre garage vous offre un service professionnel d'entretien et de réparations de flottes de véhicules commerciaux et institutionnels. Des experts en service automobile vous accompagnent pour l'entretien et les réparation en mécanique générale : pare-brise, vitres d'autos et/ou pneus",style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
                             fontFamily: "QueenSemiBold"),

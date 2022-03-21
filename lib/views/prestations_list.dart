@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iacomappgaragiste/models/article.dart';
 import 'package:iacomappgaragiste/services/prestations-api.dart';
+import 'package:iacomappgaragiste/views/body.dart';
 import 'package:iacomappgaragiste/views/nav_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Prestations extends StatefulWidget {
   @override
@@ -9,6 +11,16 @@ class Prestations extends StatefulWidget {
 }
 
 class _PrestationsState extends State<Prestations> {
+  int currentindex = 0;
+
+  savePref(int currentindex) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("currentindex", currentindex);
+      preferences.commit();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +64,18 @@ class _PrestationsState extends State<Prestations> {
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, index) {
                       Article menus = snapshot.data[index];
-                      return Container(
+                      return GestureDetector(
+                          onTap: () async {
+                            currentindex = 3;
+                        await savePref(currentindex);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Body(),
+                          ),
+                        );
+                      },
+                      child: Container(
                         margin: EdgeInsets.only(
                             left: 20, right: 15, top: 5, bottom: 5),
                         decoration: BoxDecoration(
@@ -122,6 +145,7 @@ class _PrestationsState extends State<Prestations> {
                             SizedBox(height: 10),
                           ],
                         ),
+                      )
                       );
                     });
               }
