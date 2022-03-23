@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -29,7 +31,8 @@ class _ReservationVOState extends State<ReservationVO> {
   }
 
   String nom = "", mail = "", tel = "", detail = "";
-
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  String token1;
   check() {
     final form = _key.currentState;
     if (form.validate()) {
@@ -56,7 +59,9 @@ class _ReservationVOState extends State<ReservationVO> {
     if (value == 1) {
       print(message);
       editToast(message);
-      Navigator.pushReplacement(
+      getQue();
+      subscribeToTopic('notify');
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Body()),
       );
@@ -117,8 +122,72 @@ class _ReservationVOState extends State<ReservationVO> {
     super.initState();
     time = TimeOfDay.now();
     getAllVO();
+    firebaseCloudMessaging_Listeners();
+    subscribeToTopic('notify');
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    var initializationSettings =
+    InitializationSettings(android: initializationSettingsAndroid);
+    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
+    //     onSelectNotification: selectNotification);
+    //super.initState();
+
+    _firebaseMessaging.configure(
+      //onBackgroundMessage: myBackgroundHandler,
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('${message['notification']['title']}'),
+                content: Text('${message['notification']['body']}'),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            });
+      },
+    );
+
+    firebaseCloudMessaging_Listeners();
+  }
+  void firebaseCloudMessaging_Listeners() {
+    _firebaseMessaging.getToken().then((token) {
+      print("Token is " + token);
+      setState(() {
+        token1 = token;
+      });
+    });
+  }
+  getTokenz() async {
+    String token = await _firebaseMessaging.getToken();
+    print(token);
+  }
+  Future getQue() async {
+    if (token1 != null) {
+      print("hey");
+      var response = await http
+          .post("http://iacomapp.cest-la-base.fr/notification_resa.php", body: {
+        "token": token1,
+        "title": 'Réservation sous le nom de $nom',
+        "body": 'Son mail: $mail \nSon numéro de télephone: $tel',
+      });
+      return json.decode(response.body);
+    } else {
+      print("Token is null");
+    }
   }
 
+  subscribeToTopic(String topic) async {
+    await _firebaseMessaging.subscribeToTopic(topic);
+  }
   Future<Null> selectTime(BuildContext context) async{
     picked = await showTimePicker(
       context: context,

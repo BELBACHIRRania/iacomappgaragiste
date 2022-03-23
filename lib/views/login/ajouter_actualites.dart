@@ -20,23 +20,9 @@ class AjouterActualites extends StatefulWidget {
 }
 
 class _AjouterActualitesState extends State<AjouterActualites> {
-  String id = "",
-      titre,
-      description,
-      morelink,
-      moreTextlink,
-      actif,
-      image,
-      id_app,
-      showInWebsite;
-  String name = "",
-      email = "",
-      mobile = "",
-      password = "",
-      points = "",
-      id_user = "";
-  int selectedRadio;
-  int pubsite;
+  String id = "",titre, description, morelink, moreTextlink, actif, image, id_app, showInWebsite;
+  String name = "", email = "", mobile = "", password = "", points = "", id_user = "";
+  int selectedRadio,pubsite;
 
   final _key = new GlobalKey<FormState>();
   bool _secureText = true;
