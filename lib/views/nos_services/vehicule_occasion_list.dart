@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iacomappgaragiste/models/article.dart';
 import 'package:iacomappgaragiste/services/vehicule_occasion-api.dart';
-import 'package:iacomappgaragiste/views/nos_services/vehicule_neuf_details.dart';
 import 'package:iacomappgaragiste/views/nos_services/vehicule_occasion_details.dart';
 
 class VehiculeOList extends StatefulWidget {

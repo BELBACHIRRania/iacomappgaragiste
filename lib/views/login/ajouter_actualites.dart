@@ -29,11 +29,6 @@ class _AjouterActualitesState extends State<AjouterActualites> {
 
   String fileName;
 
-  getTokenz() async {
-    String token = await _firebaseMessaging.getToken();
-    print(token);
-  }
-
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   String token1;
 
@@ -163,7 +158,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
     if (token1 != null) {
       print("hey");
       var response = await http
-          .post("http://iacomapp.cest-la-base.fr/notification.php", body: {
+          .post("http://iacomapp.cest-la-base.fr/notif_iacomgarage.php", body: {
         "token": token1,
         "title": titre,
         "body": description,

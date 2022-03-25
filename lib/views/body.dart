@@ -1,5 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iacomappgaragiste/views/accueil.dart';
 import 'package:iacomappgaragiste/views/nos_services.dart';
@@ -17,7 +19,8 @@ class Body extends StatefulWidget {
 
 class BodyState extends State<Body> {
   int currentindex;
-
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  String token1;
   List<Widget> widgetOptions = <Widget>[
     Accueil(),
     NosServices(),
@@ -46,6 +49,54 @@ class BodyState extends State<Body> {
     super.initState();
     getPref();
     changeItem(currentindex);
+    firebaseCloudMessaging_Listeners();
+      subscribeToTopic('actus');
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    var initializationSettings =
+    InitializationSettings(android: initializationSettingsAndroid);
+    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
+    //     onSelectNotification: selectNotification);
+    //super.initState();
+
+    _firebaseMessaging.configure(
+      //onBackgroundMessage: myBackgroundHandler,
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('${message['notification']['title']}'),
+                content: Text(
+                    '${message['notification']['body']}'),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            });
+      },
+    );
+
+    firebaseCloudMessaging_Listeners();
+  }
+
+  void firebaseCloudMessaging_Listeners() {
+    _firebaseMessaging.getToken().then((token) {
+      print("Token is " + token);
+      setState(() {
+        token1 = token;
+      });
+    });
+  }
+  subscribeToTopic(String topic) async {
+    await _firebaseMessaging.subscribeToTopic(topic);
   }
 
   @override

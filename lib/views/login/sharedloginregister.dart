@@ -134,6 +134,16 @@ class _LoginState extends State<Login> {
     getPref();
   }
 
+  int currentindex = 0;
+
+  savePrefindex(int currentindex) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("currentindex", currentindex);
+      preferences.commit();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     switch (_loginStatus) {
@@ -178,7 +188,12 @@ class _LoginState extends State<Login> {
                                       size: 15,
                                     ),
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      currentindex=0;
+                                    savePrefindex(currentindex);
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Body()),
+                                    );
                                     }))
                           ],
                         ),

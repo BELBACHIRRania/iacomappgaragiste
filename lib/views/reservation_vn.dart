@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:iacomappgaragiste/views/body.dart';
 import 'package:iacomappgaragiste/views/nav_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ReservationVN extends StatefulWidget {
   @override
@@ -18,6 +19,15 @@ class _ReservationVNState extends State<ReservationVN> {
 
   List dataAllVN = List();
   String selectedVN;
+  int currentindex = 0;
+
+  savePref(int currentindex) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("currentindex", currentindex);
+      preferences.commit();
+    });
+  }
 
   Future getAllVN()async{
     var response = await http.get("http://iacomapp.cest-la-base.fr/vehicule_neuf.php", headers: {"Accept":"application/json"});
@@ -27,7 +37,6 @@ class _ReservationVNState extends State<ReservationVN> {
       dataAllVN = jsonData;
     });
   }
-
 
   String nom = "", mail = "", tel = "", detail = "";
 
@@ -57,7 +66,11 @@ class _ReservationVNState extends State<ReservationVN> {
     if (value == 1) {
       print(message);
       editToast(message);
-      Navigator.pushReplacement(
+      sendMailAdmin();
+      sendMailClient();
+      currentindex = 3;
+      await savePref(currentindex);
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Body()),
       );
@@ -142,6 +155,23 @@ class _ReservationVNState extends State<ReservationVN> {
     }
   }
 
+  //Send Mail
+  Future sendMailAdmin() async {
+    var response = await http.post("http://iacomapp.cest-la-base.fr/send_mail_admin.php", body: {
+      "msg": "Réservation au nom de $nom.\nAdresse mail: $mail.\nNuméro de téléphone: $tel."
+          "\nVoiture: $selectedVN.\nLe: ${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())}.\nA: ${time.hour}:${time.minute}."
+          "\nDétails: $detail",
+    });
+    return json.decode(response.body);
+  }
+
+  Future sendMailClient() async {
+    var response = await http.post("http://iacomapp.cest-la-base.fr/send_mail_client.php", body: {
+      "msg": "Votre réservation a bien été prise en compte pour le ${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())} à ${time.hour}:${time.minute}.",
+      "mail": mail,
+    });
+    return json.decode(response.body);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

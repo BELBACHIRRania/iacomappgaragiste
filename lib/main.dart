@@ -38,17 +38,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashState extends State<SplashScreen> {
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-
-  String token1;
-
-  getTokenz() async {
-    String token = await _firebaseMessaging.getToken();
-    print(token);
-  }
 
   int currentindex = 0;
-
   savePref(int currentindex) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
@@ -56,19 +47,28 @@ class SplashState extends State<SplashScreen> {
       preferences.commit();
     });
   }
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  String token1;
+  getTokenz() async {
+    String token = await _firebaseMessaging.getToken();
+    print(token);
+  }
 
   @override
   void initState() {
     super.initState();
     startTime();
     savePref(currentindex);
-
-    subscribeToTopic('notify');
+    subscribeToTopic('actus');
     var initializationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initializationSettings =
-    InitializationSettings(android: initializationSettingsAndroid);
+    var initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
+    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
+    //     onSelectNotification: selectNotification);
+    super.initState();
     _firebaseMessaging.configure(
+      //onBackgroundMessage: myBackgroundHandler,
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         showDialog(
@@ -76,7 +76,8 @@ class SplashState extends State<SplashScreen> {
             builder: (context) {
               return AlertDialog(
                 title: Text('${message['notification']['title']}'),
-                content: Text('${message['notification']['body']}'),
+                content: Text(
+                    '${message['notification']['body']}'),
                 actions: <Widget>[
                   FlatButton(
                     child: Text('Ok'),
@@ -93,6 +94,7 @@ class SplashState extends State<SplashScreen> {
     getTokenz();
   }
 
+
   void firebaseCloudMessaging_Listeners() {
     _firebaseMessaging.getToken().then((token) {
       print("Token is " + token);
@@ -105,7 +107,6 @@ class SplashState extends State<SplashScreen> {
   subscribeToTopic(String topic) async {
     await _firebaseMessaging.subscribeToTopic(topic);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

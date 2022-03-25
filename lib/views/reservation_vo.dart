@@ -1,14 +1,13 @@
 import 'dart:convert';
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:iacomappgaragiste/views/body.dart';
 import 'package:iacomappgaragiste/views/nav_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ReservationVO extends StatefulWidget {
   @override
@@ -17,10 +16,18 @@ class ReservationVO extends StatefulWidget {
 
 class _ReservationVOState extends State<ReservationVO> {
   final _key = new GlobalKey<FormState>();
-
   List dataAllVO = List();
   String selectedVO;
+  String nom = "", mail = "", tel = "", detail = "";
+  int currentindex = 0;
 
+  savePref(int currentindex) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("currentindex", currentindex);
+      preferences.commit();
+    });
+  }
   Future getAllVO()async{
     var response = await http.get("http://iacomapp.cest-la-base.fr/vehicule_occasion.php", headers: {"Accept":"application/json"});
     var jsonBody = response.body;
@@ -29,10 +36,6 @@ class _ReservationVOState extends State<ReservationVO> {
       dataAllVO = jsonData;
     });
   }
-
-  String nom = "", mail = "", tel = "", detail = "";
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-  String token1;
   check() {
     final form = _key.currentState;
     if (form.validate()) {
@@ -40,7 +43,6 @@ class _ReservationVOState extends State<ReservationVO> {
       submit();
     }
   }
-
   submit() async {
     final response = await http
         .post("http://iacomapp.cest-la-base.fr/reservation_garagiste.php", body: {
@@ -59,8 +61,10 @@ class _ReservationVOState extends State<ReservationVO> {
     if (value == 1) {
       print(message);
       editToast(message);
-      getQue();
-      subscribeToTopic('notify');
+      sendMailAdmin();
+      sendMailClient();
+      currentindex = 3;
+      await savePref(currentindex);
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Body()),
@@ -70,7 +74,6 @@ class _ReservationVOState extends State<ReservationVO> {
       editToast(message);
     }
   }
-
   editToast(String toast) {
     return Fluttertoast.showToast(
         msg: toast,
@@ -80,7 +83,7 @@ class _ReservationVOState extends State<ReservationVO> {
         backgroundColor: Color(0xFF4267B2),
         textColor: Colors.white);
   }
-  /////////////////////////////////////////////////date picker //////////////////////////////////////////////////////////
+  //date picker
 
   List<DateTime> datesResa;
   DateTime selectedDateResa = DateTime.now();
@@ -113,8 +116,7 @@ class _ReservationVOState extends State<ReservationVO> {
       });
   }
 
-  /////////////////////////////////////////////////time picker //////////////////////////////////////////////////////////
-
+  //time picker
   TimeOfDay time, picked;
 
   @override
@@ -122,72 +124,8 @@ class _ReservationVOState extends State<ReservationVO> {
     super.initState();
     time = TimeOfDay.now();
     getAllVO();
-    firebaseCloudMessaging_Listeners();
-    subscribeToTopic('notify');
-    var initializationSettingsAndroid =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
-
-    var initializationSettings =
-    InitializationSettings(android: initializationSettingsAndroid);
-    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
-    //     onSelectNotification: selectNotification);
-    //super.initState();
-
-    _firebaseMessaging.configure(
-      //onBackgroundMessage: myBackgroundHandler,
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('${message['notification']['title']}'),
-                content: Text('${message['notification']['body']}'),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text('Ok'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            });
-      },
-    );
-
-    firebaseCloudMessaging_Listeners();
-  }
-  void firebaseCloudMessaging_Listeners() {
-    _firebaseMessaging.getToken().then((token) {
-      print("Token is " + token);
-      setState(() {
-        token1 = token;
-      });
-    });
-  }
-  getTokenz() async {
-    String token = await _firebaseMessaging.getToken();
-    print(token);
-  }
-  Future getQue() async {
-    if (token1 != null) {
-      print("hey");
-      var response = await http
-          .post("http://iacomapp.cest-la-base.fr/notification_resa.php", body: {
-        "token": token1,
-        "title": 'Réservation sous le nom de $nom',
-        "body": 'Son mail: $mail \nSon numéro de télephone: $tel',
-      });
-      return json.decode(response.body);
-    } else {
-      print("Token is null");
-    }
   }
 
-  subscribeToTopic(String topic) async {
-    await _firebaseMessaging.subscribeToTopic(topic);
-  }
   Future<Null> selectTime(BuildContext context) async{
     picked = await showTimePicker(
       context: context,
@@ -208,6 +146,24 @@ class _ReservationVOState extends State<ReservationVO> {
         print("time");
       });
     }
+  }
+
+  //Send Mail
+  Future sendMailAdmin() async {
+    var response = await http.post("http://iacomapp.cest-la-base.fr/send_mail_admin.php", body: {
+      "msg": "Réservation au nom de $nom.\nAdresse mail: $mail.\nNuméro de téléphone: $tel."
+          "\nVoiture: $selectedVO.\nLe: ${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())}.\nA: ${time.hour}:${time.minute}."
+          "\nDétails: $detail",
+    });
+    return json.decode(response.body);
+  }
+
+  Future sendMailClient() async {
+    var response = await http.post("http://iacomapp.cest-la-base.fr/send_mail_client.php", body: {
+      "msg": "Votre réservation a bien été prise en compte pour le ${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())} à ${time.hour}:${time.minute}.",
+      "mail": mail,
+    });
+    return json.decode(response.body);
   }
 
   @override
