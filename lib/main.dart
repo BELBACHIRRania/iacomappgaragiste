@@ -39,7 +39,10 @@ class SplashScreen extends StatefulWidget {
 
 class SplashState extends State<SplashScreen> {
 
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  String token1;
   int currentindex = 0;
+
   savePref(int currentindex) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
@@ -47,11 +50,18 @@ class SplashState extends State<SplashScreen> {
       preferences.commit();
     });
   }
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
-  getTokenz() async {
-    String token = await _firebaseMessaging.getToken();
-    print(token);
+  void firebaseCloudMessaging_Listeners() {
+    _firebaseMessaging.getToken().then((token) {
+      print("Token is " + token);
+      setState(() {
+        token1 = token;
+      });
+    });
+  }
+
+  subscribeToTopic(String topic) async {
+    await _firebaseMessaging.subscribeToTopic(topic);
   }
 
   @override
@@ -83,12 +93,7 @@ class SplashState extends State<SplashScreen> {
             });
       },
     );
-
-    getTokenz();
-  }
-
-  subscribeToTopic(String topic) async {
-    await _firebaseMessaging.subscribeToTopic(topic);
+    firebaseCloudMessaging_Listeners();
   }
 
   @override

@@ -103,12 +103,40 @@ class _AjouterActualitesState extends State<AjouterActualites> {
         textColor: Colors.white);
   }
 
+  void firebaseCloudMessaging_Listeners() {
+    _firebaseMessaging.getToken().then((token) {
+      print("Token is " + token);
+      setState(() {
+        token1 = token;
+      });
+    });
+  }
+
+  Future getQue() async {
+    if (token1 != null) {
+      print("hey");
+      var response = await http
+          .post("http://iacomapp.cest-la-base.fr/notif_iacomgarage.php", body: {
+        "token": token1,
+        "title": titre,
+        "body": description,
+      });
+      return json.decode(response.body);
+    } else {
+      print("Token is null");
+    }
+  }
+
+  subscribeToTopic(String topic) async {
+    await _firebaseMessaging.subscribeToTopic(topic);
+  }
+
   void initState() {
     // TODO: implement initState
     super.initState();
     selectedRadio = 1;
     pubsite = 1;
-    subscribeToTopic('notify');
+    subscribeToTopic('iacomgarage');
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
@@ -130,31 +158,8 @@ class _AjouterActualitesState extends State<AjouterActualites> {
             });
       },
     );
-    getTokenz();
-  }
-  
-  getTokenz() async {
-    String token = await _firebaseMessaging.getToken();
-    print(token);
-  }
 
-  Future getQue() async {
-    if (token1 != null) {
-      print("hey");
-      var response = await http
-          .post("http://iacomapp.cest-la-base.fr/notif_iacomgarage.php", body: {
-        "token": token1,
-        "title": titre,
-        "body": description,
-      });
-      return json.decode(response.body);
-    } else {
-      print("Token is null");
-    }
-  }
-
-  subscribeToTopic(String topic) async {
-    await _firebaseMessaging.subscribeToTopic(topic);
+    firebaseCloudMessaging_Listeners();
   }
 
   setSelectedRadio(int val) {

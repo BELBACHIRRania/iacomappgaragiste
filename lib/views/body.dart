@@ -1,7 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iacomappgaragiste/views/accueil.dart';
 import 'package:iacomappgaragiste/views/nos_services.dart';
@@ -18,9 +17,11 @@ class Body extends StatefulWidget {
 }
 
 class BodyState extends State<Body> {
-  int currentindex=0;
+
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   String token1;
+  int currentindex=0;
+
   List<Widget> widgetOptions = <Widget>[
     Accueil(),
     NosServices(),
@@ -42,6 +43,19 @@ class BodyState extends State<Body> {
       preferences.reload();
       currentindex = preferences.getInt("currentindex");
     });
+  }
+
+  void firebaseCloudMessaging_Listeners() {
+    _firebaseMessaging.getToken().then((token) {
+      print("Token is " + token);
+      setState(() {
+        token1 = token;
+      });
+    });
+  }
+
+  subscribeToTopic(String topic) async {
+    await _firebaseMessaging.subscribeToTopic(topic);
   }
 
   @override
@@ -72,14 +86,7 @@ class BodyState extends State<Body> {
             });
       },
     );
-    getTokenz();
-  }
-  getTokenz() async {
-    String token = await _firebaseMessaging.getToken();
-    print(token);
-  }
-  subscribeToTopic(String topic) async {
-    await _firebaseMessaging.subscribeToTopic(topic);
+    firebaseCloudMessaging_Listeners();
   }
 
   @override
