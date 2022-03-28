@@ -83,8 +83,8 @@ class _ReservationVOState extends State<ReservationVO> {
         backgroundColor: Color(0xFF4267B2),
         textColor: Colors.white);
   }
-  //date picker
 
+  //date picker
   List<DateTime> datesResa;
   DateTime selectedDateResa = DateTime.now();
   DateTime dates_resa;
@@ -158,6 +158,7 @@ class _ReservationVOState extends State<ReservationVO> {
     return json.decode(response.body);
   }
 
+  //Send Mail Client
   Future sendMailClient() async {
     var response = await http.post("http://iacomapp.cest-la-base.fr/send_mail_client.php", body: {
       "msg": "Votre réservation a bien été prise en compte pour le ${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())} à ${time.hour}:${time.minute}.",

@@ -18,7 +18,7 @@ class Body extends StatefulWidget {
 }
 
 class BodyState extends State<Body> {
-  int currentindex;
+  int currentindex=0;
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   String token1;
   List<Widget> widgetOptions = <Widget>[
@@ -49,19 +49,8 @@ class BodyState extends State<Body> {
     super.initState();
     getPref();
     changeItem(currentindex);
-    firebaseCloudMessaging_Listeners();
       subscribeToTopic('iacomgarage');
-    var initializationSettingsAndroid =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
-
-    var initializationSettings =
-    InitializationSettings(android: initializationSettingsAndroid);
-    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
-    //     onSelectNotification: selectNotification);
-    //super.initState();
-
     _firebaseMessaging.configure(
-      //onBackgroundMessage: myBackgroundHandler,
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         showDialog(
@@ -83,17 +72,11 @@ class BodyState extends State<Body> {
             });
       },
     );
-
-    firebaseCloudMessaging_Listeners();
+    getTokenz();
   }
-
-  void firebaseCloudMessaging_Listeners() {
-    _firebaseMessaging.getToken().then((token) {
-      print("Token is " + token);
-      setState(() {
-        token1 = token;
-      });
-    });
+  getTokenz() async {
+    String token = await _firebaseMessaging.getToken();
+    print(token);
   }
   subscribeToTopic(String topic) async {
     await _firebaseMessaging.subscribeToTopic(topic);

@@ -155,7 +155,7 @@ class _ReservationVNState extends State<ReservationVN> {
     }
   }
 
-  //Send Mail
+  //Send Mail Admin
   Future sendMailAdmin() async {
     var response = await http.post("http://iacomapp.cest-la-base.fr/send_mail_admin.php", body: {
       "msg": "Réservation au nom de $nom.\nAdresse mail: $mail.\nNuméro de téléphone: $tel."
@@ -165,6 +165,7 @@ class _ReservationVNState extends State<ReservationVN> {
     return json.decode(response.body);
   }
 
+  //Send Mail Client
   Future sendMailClient() async {
     var response = await http.post("http://iacomapp.cest-la-base.fr/send_mail_client.php", body: {
       "msg": "Votre réservation a bien été prise en compte pour le ${DateFormat('yyyy/MM/dd').format(selectedDateResa.toLocal())} à ${time.hour}:${time.minute}.",

@@ -49,7 +49,6 @@ class SplashState extends State<SplashScreen> {
   }
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
-  String token1;
   getTokenz() async {
     String token = await _firebaseMessaging.getToken();
     print(token);
@@ -61,14 +60,8 @@ class SplashState extends State<SplashScreen> {
     startTime();
     savePref(currentindex);
     subscribeToTopic('iacomgarage');
-    var initializationSettingsAndroid =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
-    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
-    //     onSelectNotification: selectNotification);
     super.initState();
     _firebaseMessaging.configure(
-      //onBackgroundMessage: myBackgroundHandler,
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         showDialog(
@@ -94,19 +87,10 @@ class SplashState extends State<SplashScreen> {
     getTokenz();
   }
 
-
-  void firebaseCloudMessaging_Listeners() {
-    _firebaseMessaging.getToken().then((token) {
-      print("Token is " + token);
-      setState(() {
-        token1 = token;
-      });
-    });
-  }
-
   subscribeToTopic(String topic) async {
     await _firebaseMessaging.subscribeToTopic(topic);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

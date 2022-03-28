@@ -106,21 +106,10 @@ class _AjouterActualitesState extends State<AjouterActualites> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    firebaseCloudMessaging_Listeners();
     selectedRadio = 1;
     pubsite = 1;
     subscribeToTopic('notify');
-    var initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
-
-    var initializationSettings =
-        InitializationSettings(android: initializationSettingsAndroid);
-    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
-    //     onSelectNotification: selectNotification);
-    //super.initState();
-
     _firebaseMessaging.configure(
-      //onBackgroundMessage: myBackgroundHandler,
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         showDialog(
@@ -141,17 +130,12 @@ class _AjouterActualitesState extends State<AjouterActualites> {
             });
       },
     );
-
-    firebaseCloudMessaging_Listeners();
+    getTokenz();
   }
-
-  void firebaseCloudMessaging_Listeners() {
-    _firebaseMessaging.getToken().then((token) {
-      print("Token is " + token);
-      setState(() {
-        token1 = token;
-      });
-    });
+  
+  getTokenz() async {
+    String token = await _firebaseMessaging.getToken();
+    print(token);
   }
 
   Future getQue() async {
