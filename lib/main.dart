@@ -60,7 +60,7 @@ class SplashState extends State<SplashScreen> {
     super.initState();
     startTime();
     savePref(currentindex);
-    subscribeToTopic('actus');
+    subscribeToTopic('iacomgarage');
     var initializationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
     var initializationSettings = InitializationSettings(android: initializationSettingsAndroid);

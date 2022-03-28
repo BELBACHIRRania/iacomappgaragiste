@@ -50,7 +50,7 @@ class BodyState extends State<Body> {
     getPref();
     changeItem(currentindex);
     firebaseCloudMessaging_Listeners();
-      subscribeToTopic('actus');
+      subscribeToTopic('iacomgarage');
     var initializationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
 
