@@ -68,7 +68,6 @@ class SplashState extends State<SplashScreen> {
   void initState() {
     super.initState();
     startTime();
-    savePref(currentindex);
     subscribeToTopic('iacomgarage');
     super.initState();
     _firebaseMessaging.configure(
@@ -108,8 +107,10 @@ class SplashState extends State<SplashScreen> {
     return new Timer(duration, route);
   }
 
-  route() {
-    Navigator.pushReplacement(
+  route() async{
+    currentindex=0;
+    await savePref(currentindex);
+    await Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Body()));
   }
 

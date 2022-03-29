@@ -173,6 +173,7 @@ class _ReservationVNState extends State<ReservationVN> {
     });
     return json.decode(response.body);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -375,13 +376,10 @@ class _ReservationVNState extends State<ReservationVN> {
                                     setState(() {
                                       selectedVN = newValue;
                                     });
-                                    if(selectedVN == null){
-                                      selectedVN = "";
-                                    }
                                   },
                                   items: dataAllVN.map((list) {
                                     return DropdownMenuItem(
-                                      child: new Text(list['nom_art']),
+                                      child: new Text(list['nom_art'],style: TextStyle(color: Colors.white,fontSize: 14,) ),
                                       value: list['nom_art'].toString(),
                                     );
                                   }).toList(),

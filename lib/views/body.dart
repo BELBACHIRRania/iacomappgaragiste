@@ -20,7 +20,7 @@ class BodyState extends State<Body> {
 
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   String token1;
-  int currentindex=0;
+  int currentindex;
 
   List<Widget> widgetOptions = <Widget>[
     Accueil(),

@@ -64,7 +64,7 @@ class _ReservationVOState extends State<ReservationVO> {
       sendMailAdmin();
       sendMailClient();
       currentindex = 3;
-      await savePref(currentindex);
+      savePref(currentindex);
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Body()),
