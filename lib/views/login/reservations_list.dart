@@ -27,10 +27,7 @@ class ReservationsList extends StatelessWidget {
                 iconSize: 30,
                 color: Colors.white,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Body()),
-                  );
+                  Navigator.pop(context);
                 }),
             SizedBox(
               width: 80,
