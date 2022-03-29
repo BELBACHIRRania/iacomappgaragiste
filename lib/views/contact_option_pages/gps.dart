@@ -84,7 +84,7 @@ class PlanAccesState extends State<PlanAcces>
             SizedBox(width: 10.0),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: _boxes(48.8011630, 2.3249030, "IΛCOM Garagiste"),
+              child: _boxes(48.8011630, 2.3249030, "IΛCOM Garage"),
             ),
           ],
         ),
@@ -175,7 +175,7 @@ class PlanAccesState extends State<PlanAcces>
 Marker iacomgaragisteMarker = Marker(
   markerId: MarkerId('iacomgaragiste'),
   position: LatLng(48.8011630, 2.3249030),
-  infoWindow: InfoWindow(title: 'IΛCOM Garagiste'),
+  infoWindow: InfoWindow(title: 'IΛCOM Garage'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueBlue,
   ),

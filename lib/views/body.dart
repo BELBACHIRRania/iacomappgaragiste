@@ -47,7 +47,6 @@ class BodyState extends State<Body> {
 
   void firebaseCloudMessaging_Listeners() {
     _firebaseMessaging.getToken().then((token) {
-      print("Token is " + token);
       setState(() {
         token1 = token;
       });

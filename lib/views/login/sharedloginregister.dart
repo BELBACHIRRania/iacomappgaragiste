@@ -8,6 +8,7 @@ import 'package:iacomappgaragiste/views/login/ajouter_actualites.dart';
 import 'package:iacomappgaragiste/views/login/infos_perso.dart';
 import 'package:iacomappgaragiste/views/login/modifier_password.dart';
 import 'package:iacomappgaragiste/views/login/points.dart';
+import 'package:iacomappgaragiste/views/login/reservations_list.dart';
 import 'package:iacomappgaragiste/views/login/scan_qr_ajouter.dart';
 import 'package:iacomappgaragiste/views/login/scan_qr_supprimer.dart';
 import 'package:iacomappgaragiste/views/nav_bar.dart';
@@ -1238,6 +1239,46 @@ class _MainMenuState extends State<MainMenu> {
                                                   morelink,
                                                   moreTextlink,
                                                   actif)));
+                                }),
+                          ),
+                          offstage: false,
+                        ),
+                      if (status == 'admin')
+                        SizedBox(
+                          height: 40,
+                        ),
+                      if (status == 'admin')
+                        Offstage(
+                          child: SizedBox(
+                            height: 44.0,
+                            width: 250,
+                            child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0)),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Icon(Icons.bookmark,color: Colors.white,),
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      Text(
+                                        "Réservations",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "Queen",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    ]),
+                                textColor: Colors.black,
+                                color: Color(0xFF4267B2),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ReservationsList()));
                                 }),
                           ),
                           offstage: false,

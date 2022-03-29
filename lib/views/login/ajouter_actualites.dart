@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:iacomappgaragiste/views/body.dart';
@@ -105,7 +104,6 @@ class _AjouterActualitesState extends State<AjouterActualites> {
 
   void firebaseCloudMessaging_Listeners() {
     _firebaseMessaging.getToken().then((token) {
-      print("Token is " + token);
       setState(() {
         token1 = token;
       });
