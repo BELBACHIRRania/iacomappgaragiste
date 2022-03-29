@@ -114,7 +114,7 @@ class _PointsState extends State<Points> {
                     Container(
                       width: 300,
                       child: Text(
-                        "Gagnez des points de fidélité avec votre application IΛCOM Garagiste",
+                        "Gagnez des points de fidélité avec votre application IΛCOM Garage",
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: "Queen",
