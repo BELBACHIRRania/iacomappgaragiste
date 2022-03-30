@@ -38,7 +38,6 @@ class _InfosPersoState extends State<InfosPerso> {
 
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-
     setState(() {
       preferences.reload();
       id_user = preferences.getString("id_user");

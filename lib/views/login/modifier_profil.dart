@@ -39,8 +39,6 @@ class _ModifierProfilState extends State<ModifierProfil> {
     txtmobile = TextEditingController(text: widget.mobile);
   }
 
-  bool _secureText = true;
-
   check() {
     final form = _key.currentState;
     if (form.validate()) {

@@ -980,7 +980,7 @@ class _MainMenuState extends State<MainMenu> {
                             textColor: Colors.black,
                             color: Color(0xFF4267B2),
                             onPressed: () {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => InfosPerso(signOut,

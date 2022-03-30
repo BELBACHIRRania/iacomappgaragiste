@@ -70,12 +70,7 @@ class _ModifierPasswordState extends State<ModifierPassword> {
     if (value == 1) {
       print(message);
       editToast(message);
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => MainMenu(signOut, id_user, name, email,
-                mobile, password, status, points)),
-      );
+      Navigator.pop(context);
     } else {
       print(message);
       editToast(message);
