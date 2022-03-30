@@ -68,7 +68,6 @@ class SplashState extends State<SplashScreen> {
     super.initState();
     startTime();
     subscribeToTopic('iacomgarage');
-    super.initState();
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
