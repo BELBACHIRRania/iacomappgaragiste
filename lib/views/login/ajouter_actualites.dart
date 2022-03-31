@@ -60,7 +60,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
 
   submit(String fileName) async {
     final response = await http.post(
-        "http://iacomapp.cest-la-base.fr/ajouter_actualite_restau.php",
+        "http://iacomapp.cest-la-base.fr/ajouter_actualite.php",
         body: {
           "id": id,
           "titre": titre,
@@ -68,7 +68,7 @@ class _AjouterActualitesState extends State<AjouterActualites> {
           "morelink": morelink,
           "moreTextlink": moreTextlink,
           "actif": actif,
-          "id_app": "18",
+          "id_app": "17",
           "showInWebsite": showInWebsite,
           "image_act": base64Image,
           "name": fileName,
