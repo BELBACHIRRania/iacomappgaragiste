@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iacomappgaragiste/views/accueil.dart';
+import 'package:iacomappgaragiste/views/actualite_list.dart';
 import 'package:iacomappgaragiste/views/nos_services.dart';
 import 'package:iacomappgaragiste/views/contact.dart';
 import 'package:iacomappgaragiste/views/reservation.dart';
@@ -64,6 +65,13 @@ class BodyState extends State<Body> {
     changeItem(currentindex);
       subscribeToTopic('iacomgarage');
     _firebaseMessaging.configure(
+    onResume: (Map<String, dynamic> message) {
+      print("I am hereonResume");
+      print(message);
+      Navigator.push(context,
+          MaterialPageRoute(builder: (_) => ActualiteScreen())
+      );
+    },
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         showDialog(

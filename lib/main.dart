@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:iacomappgaragiste/views/actualite_list.dart';
 import 'package:iacomappgaragiste/views/body.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -69,6 +70,13 @@ class SplashState extends State<SplashScreen> {
     startTime();
     subscribeToTopic('iacomgarage');
     _firebaseMessaging.configure(
+      onResume: (Map<String, dynamic> message) {
+        print("I am hereonResume");
+        print(message);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (_) => ActualiteScreen())
+        );
+      },
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         showDialog(
